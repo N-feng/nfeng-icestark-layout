@@ -1,5 +1,3 @@
-const fabric = require('@umijs/fabric');
+const { getStylelintConfig } = require('@iceworks/spec');
 
-module.exports = {
-  ...fabric.stylelint,
-};
+module.exports = getStylelintConfig('react');

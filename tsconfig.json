@@ -1,41 +1,33 @@
 {
+  "compileOnSave": false,
+  "buildOnSave": false,
   "compilerOptions": {
-    "outDir": "build/dist",
-    "module": "esnext",
-    "target": "esnext",
-    "lib": ["esnext", "dom"],
-    "sourceMap": true,
     "baseUrl": ".",
+    "outDir": "build",
+    "module": "esnext",
+    "target": "es6",
     "jsx": "react-jsx",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "allowJs": true,
+    "rootDir": "./",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
-    "allowJs": true,
     "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "strict": true,
+    "types": ["node"],
     "paths": {
       "@/*": ["./src/*"],
-      "@@/*": ["./src/.umi/*"]
+      "ice": [".ice"]
     }
   },
-  "include": [
-    "mock/**/*",
-    "src/**/*",
-    "tests/**/*",
-    "test/**/*",
-    "__test__/**/*",
-    "typings/**/*",
-    "config/**/*",
-    ".eslintrc.js",
-    ".stylelintrc.js",
-    ".prettierrc.js",
-    "jest.config.js",
-    "mock/*"
-  ],
-  "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest"]
+  "include": ["src", ".ice"],
+  "exclude": ["node_modules", "build", "public"]
 }

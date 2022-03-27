@@ -1,5 +1,3 @@
-const fabric = require('@umijs/fabric');
+const { getPrettierConfig } = require('@iceworks/spec');
 
-module.exports = {
-  ...fabric.prettier,
-};
+module.exports = getPrettierConfig('react');
