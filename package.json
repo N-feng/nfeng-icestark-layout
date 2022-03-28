@@ -5,6 +5,7 @@
   "dependencies": {
     "@alifd/next": "^1.x",
     "@alifd/theme-design-pro": "^0.x",
+    "@umijs/yorkie": "^2.0.5",
     "classnames": "^2.2.5",
     "moment": "^2.24.0",
     "prop-types": "^15.5.8",
@@ -21,8 +22,7 @@
     "build-plugin-moment-locales": "^0.1.0",
     "eslint": "^7.30.0",
     "ice.js": "^2.0.0",
-    "stylelint": "^13.7.2",
-    "yorkie": "^2.0.0"
+    "stylelint": "^13.7.2"
   },
   "scripts": {
     "start": "icejs start",

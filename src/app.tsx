@@ -26,7 +26,7 @@ const appConfig: IAppConfig = {
         path: '/waiter',
         title: '小二平台',
         loadScriptMode: 'import',
-        entry: 'http://localhost:3001/',
+        entry: 'http://iceworks.oss-cn-hangzhou.aliyuncs.com/icestark/child-vue3-vite/index.html',
       }, {
         path: '/angular',
         title: 'Angular',
