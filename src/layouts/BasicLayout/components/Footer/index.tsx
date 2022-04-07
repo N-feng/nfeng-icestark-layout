@@ -5,7 +5,7 @@ export default function Footer() {
     <p className={styles.footer}>
       <span className={styles.logo}>Alibaba Fusion</span>
       <br />
-      <span className={styles.copyright}>© 2019-现在 Alibaba Fusion & ICE</span>
+      <span className={styles.copyright}>© 2019-现在 Alibaba Fusion & ICE <a href="https://beian.miit.gov.cn">粤ICP备2022038483号</a></span>
     </p>
   );
 }
