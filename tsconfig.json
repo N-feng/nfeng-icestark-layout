@@ -1,33 +1,16 @@
 {
-  "compileOnSave": false,
-  "buildOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "build",
+    "target": "esnext",
+    "useDefineForClassFields": true,
     "module": "esnext",
-    "target": "es6",
-    "jsx": "react-jsx",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es6", "dom"],
+    "strict": true,
+    "jsx": "preserve",
     "sourceMap": true,
-    "allowJs": true,
-    "rootDir": "./",
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": false,
-    "importHelpers": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "types": ["node"],
-    "paths": {
-      "@/*": ["./src/*"],
-      "ice": [".ice"]
-    }
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext", "dom"],
+    "skipLibCheck": true
   },
-  "include": ["src", ".ice"],
-  "exclude": ["node_modules", "build", "public"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

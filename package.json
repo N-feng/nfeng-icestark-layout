@@ -1,41 +1,35 @@
 {
-  "name": "@icedesign/stark-layout-scaffold",
+  "name": "@vue-materials/icestark-layout-app",
   "version": "0.1.0",
-  "description": "微前端方案 icestark 的主应用模板，用于快速初始化主应用",
+  "description": "icestark 基于 Vue 的主应用模板",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview"
+  },
   "dependencies": {
-    "@alifd/next": "^1.x",
-    "@alifd/theme-design-pro": "^0.x",
-    "@umijs/yorkie": "^2.0.5",
-    "classnames": "^2.2.5",
-    "moment": "^2.24.0",
-    "prop-types": "^15.5.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@element-plus/icons-vue": "^0.2.4",
+    "@ice/stark": "^2.6.1",
+    "element-plus": "^1.2.0-beta.6",
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
-    "@iceworks/spec": "^1.0.0",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
-    "build-plugin-fusion": "^0.1.21",
-    "build-plugin-icestark": "^2.0.0",
-    "build-plugin-ignore-style": "^0.1.0",
-    "build-plugin-moment-locales": "^0.1.0",
-    "eslint": "^7.30.0",
-    "ice.js": "^2.0.0",
-    "stylelint": "^13.7.2"
-  },
-  "scripts": {
-    "start": "icejs start",
-    "build": "icejs build",
-    "lint": "npm run eslint && npm run stylelint",
-    "eslint": "eslint --cache --ext .js,.jsx,.ts,.tsx ./",
-    "eslint:fix": "npm run eslint -- --fix",
-    "stylelint": "stylelint \"**/*.{css,scss,less}\""
+    "@vitejs/plugin-vue": "^1.9.2",
+    "typescript": "^4.4.3",
+    "vite": "^2.6.0",
+    "vite-plugin-index-html": "^0.1.0",
+    "vue-tsc": "^0.3.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ice-lab/react-materials/tree/master/scaffolds/icestark-layout"
+    "url": "https://github.com/ice-lab/vue-materials/tree/master/scaffolds/icestark-framework-app"
   },
+  "license": "MIT",
+  "keywords": [
+    "ice",
+    "ice-scaffold"
+  ],
   "private": true,
-  "originTemplate": "@icedesign/stark-layout-scaffold"
+  "originTemplate": "@vue-materials/icestark-layout-app"
 }
