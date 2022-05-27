@@ -55,13 +55,13 @@ import { useRouter } from "vue-router";
 </script>
 
 <template>
-  <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="['Waiter', 'IcestarkApp']">
-        <router-view />
-      </keep-alive>
-    </transition>
-  </section>
+  <!-- <div id="app"> -->
+  <!--    <transition name="fade-transform" mode="out-in">-->
+  <!--      <keep-alive :include="['Waiter', 'IcestarkApp']">-->
+  <router-view />
+  <!--      </keep-alive>-->
+  <!--    </transition>-->
+  <!-- </div> -->
   <!-- <div id="app">
     <div>
       <layout />

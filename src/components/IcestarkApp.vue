@@ -42,7 +42,7 @@ onMounted(() => {
       loadScriptMode: "import",
       // sandbox: true,
       entry:
-        "http://iceworks.oss-cn-hangzhou.aliyuncs.com/icestark/child-vue3-vite/index.html",
+        "http://localhost:3001/",
       container,
     },
   );

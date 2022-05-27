@@ -3,9 +3,9 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import NotFound from './pages/NotFound.vue';
-import Layout from "./layouts/BasicLayout.vue";
-import IcestarkApp from './pages/IcestarkApp.vue';
-import IcestarkReact from './pages/IcestarkReact.vue';
+import Layout from "./layouts/BasicLayout/index.vue";
+import IcestarkApp from './components/IcestarkApp.vue';
+import IcestarkReact from './components/IcestarkReact.vue';
 
 const routerHistory = createWebHistory();
 
@@ -30,19 +30,21 @@ const routes: any = [
     children: [
       {
         path: '',
-        name: 'IcestarkApp',
+        name: 'IcestarkReact',
         meta: { title: '商家首页', icon: 'el-icon-setting' },
-        component:  IcestarkReact 
+        component:  IcestarkReact
       },
       {
         path: 'list',
         name: 'List',
-        meta: { title: '商家列表', icon: 'el-icon-setting' }
+        meta: { title: '商家列表', icon: 'el-icon-setting' },
+        component:  IcestarkReact
       },
       {
         path: 'detail',
         name: 'Detail',
-        meta: { title: '商家详情', icon: 'el-icon-setting' }
+        meta: { title: '商家详情', icon: 'el-icon-setting' },
+        component:  IcestarkReact
       }
     ]
   },
@@ -56,17 +58,19 @@ const routes: any = [
         path: '',
         name: 'IcestarkApp',
         meta: { title: '小二首页', icon: 'el-icon-setting' },
-        component:  IcestarkApp 
+        component:  IcestarkApp
       },
       {
         path: 'list',
         name: 'List',
-        meta: { title: '小二列表', icon: 'el-icon-setting' }
+        meta: { title: '小二列表', icon: 'el-icon-setting' },
+        component:  IcestarkApp
       },
       {
         path: 'detail',
         name: 'Detail',
-        meta: { title: '小二详情', icon: 'el-icon-setting' }
+        meta: { title: '小二详情', icon: 'el-icon-setting' },
+        component:  IcestarkApp
       }
     ]
   }
