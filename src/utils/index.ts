@@ -2,6 +2,7 @@ import pathToRegexp from 'path-to-regexp';
 import type { Path, Key, RegExpOptions } from 'path-to-regexp';
 
 export interface MenuConfig {
+  name: string
   activePath: string;
   exact?: boolean;
   strict?: boolean;

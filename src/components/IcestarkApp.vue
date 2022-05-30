@@ -2,7 +2,12 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import start from "@ice/stark/lib/start";
 // import { start } from '@ice/stark'
-import { registerMicroApps, createMicroApp, unmountMicroApp, removeMicroApps } from "@ice/stark/lib/apps";
+import {
+  registerMicroApps,
+  createMicroApp,
+  unmountMicroApp,
+  removeMicroApps,
+} from "@ice/stark/lib/apps";
 import { useRouter } from "vue-router";
 
 // export default {
@@ -29,23 +34,20 @@ const router = useRouter();
 let loading = ref(false);
 let microAppsActive = ref(false);
 
-console.log('setup')
+console.log("setup");
 
 onMounted(() => {
   const container = document.getElementById("waiter") as HTMLElement;
   console.log("waiter");
-  createMicroApp(
-    {
-      name: "waiter",
-      activePath: "/waiter",
-      title: "小二平台",
-      loadScriptMode: "import",
-      // sandbox: true,
-      entry:
-        "http://localhost:3001/",
-      container,
-    },
-  );
+  createMicroApp({
+    name: "waiter",
+    activePath: "/waiter",
+    title: "小二平台",
+    loadScriptMode: "import",
+    // sandbox: true,
+    entry: "http://localhost:3001/",
+    container,
+  });
 
   // registerMicroApps([
   //   {
@@ -81,10 +83,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  console.log('waiter destroyed')
-  unmountMicroApp('waiter')
+  console.log("waiter destroyed");
+  unmountMicroApp("waiter");
   // removeMicroApps(['waiter'])
-})
+});
 </script>
 
 <template>
