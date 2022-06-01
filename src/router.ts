@@ -3,7 +3,7 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import NotFound from './pages/NotFound.vue';
-import Layout from "./layouts/BasicLayout/index.vue";
+import Layout from "./layouts/BasicLayout/index.tsx";
 import IcestarkApp from '@/components/IcestarkApp.vue';
 import IcestarkReact from './components/IcestarkReact.vue';
 
@@ -29,23 +29,23 @@ const routes: any = [
     meta: { title: '商家平台（React）', icon: 'el-icon-edit-outline' },
     children: [
       {
-        path: '',
+        path: '/',
         name: 'IcestarkReact',
         meta: { title: '商家首页', icon: 'el-icon-setting' },
-        component:  IcestarkReact
+        component:  IcestarkApp
       },
       {
         path: 'list',
-        name: 'List',
+        name: 'SellerList',
         meta: { title: '商家列表', icon: 'el-icon-setting' },
-        component:  IcestarkReact
+        component:  IcestarkApp
       },
       {
         path: 'detail',
-        name: 'Detail',
+        name: 'SellerDetail',
         meta: { title: '商家详情', icon: 'el-icon-setting' },
-        component:  IcestarkReact
-      }
+        component:  IcestarkApp
+      },
     ]
   },
    {
@@ -54,22 +54,22 @@ const routes: any = [
     name: 'Waiter',
     meta: { title: '小二平台（Vue）', icon: 'el-icon-edit-outline' },
     children: [
-      // {
-      //   path: '',
-      //   name: 'IcestarkApp',
-      //   meta: { title: '小二首页', icon: 'el-icon-setting' },
-      //   // component:  IcestarkApp
-      // },
+      {
+        path: '/',
+        name: 'IcestarkApp',
+        meta: { title: '小二首页', icon: 'el-icon-setting' },
+        component:  IcestarkApp
+      },
       {
         path: 'list',
-        name: 'List',
+        name: 'WaiterList',
         meta: { title: '小二列表', icon: 'el-icon-setting' },
         component:  IcestarkApp
         // component: () => {}
       },
       {
         path: 'detail',
-        name: 'Detail',
+        name: 'WaiterDetail',
         meta: { title: '小二详情', icon: 'el-icon-setting' },
         component:  IcestarkApp
       }

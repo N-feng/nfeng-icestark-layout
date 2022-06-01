@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import {
+  onMounted,
+  onUnmounted,
+  ref,
+  defineProps,
+  PropType,
+  onActivated,
+} from "vue";
 import start from "@ice/stark/lib/start";
 // import { start } from '@ice/stark'
 import {
@@ -9,6 +16,7 @@ import {
   removeMicroApps,
 } from "@ice/stark/lib/apps";
 import { useRouter } from "vue-router";
+import type { MenuConfig } from "@/utils";
 
 // export default {
 //   name: "IcestarkApp",
@@ -34,21 +42,34 @@ const router = useRouter();
 let loading = ref(false);
 let microAppsActive = ref(false);
 
-console.log("setup");
+const props = defineProps({
+  appConfig: {
+    type: Object as PropType<MenuConfig>,
+    required: true,
+  },
+});
+
+onActivated(() => {
+  console.log("onActivated");
+});
 
 onMounted(() => {
-  const container = document.getElementById("waiter") as HTMLElement;
-  console.log("waiter");
+  const container = document.getElementById(
+    props.appConfig.name
+  ) as HTMLElement;
   createMicroApp({
-    name: "waiter",
-    activePath: "/waiter",
-    title: "小二平台",
-    loadScriptMode: "import",
-    // sandbox: true,
-    entry: "http://localhost:3001/",
+    ...props.appConfig,
     container,
   });
-
+  // createMicroApp({
+  //   name: "waiter",
+  //   activePath: "/waiter",
+  //   title: "小二平台",
+  //   loadScriptMode: "import",
+  //   // sandbox: true,
+  //   entry: "http://localhost:3001/",
+  //   container,
+  // });
   // registerMicroApps([
   //   {
   //     name: "waiter",
@@ -83,14 +104,10 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  console.log("waiter destroyed");
-  unmountMicroApp("waiter");
-  // removeMicroApps(['waiter'])
+  unmountMicroApp(props.appConfig.name);
 });
 </script>
 
 <template>
-  <div id="icestarkApp">
-    <div id="waiter">waiter</div>
-  </div>
+  <div :id="appConfig.name"></div>
 </template>

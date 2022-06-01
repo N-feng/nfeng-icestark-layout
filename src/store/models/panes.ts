@@ -1,7 +1,7 @@
 import { asideMenuConfig } from '../../layouts/BasicLayout/menuConfig';
-import type { MenuConfig } from "../../utils";
-import { Module, Store } from 'vuex'
+import { Module } from 'vuex'
 import { PanesState, IRootState } from '../types'
+import { store } from '@ice/stark-data'
 
 const panes: Module<PanesState, IRootState> = {
   namespaced: true,
@@ -19,6 +19,11 @@ const panes: Module<PanesState, IRootState> = {
   actions: {
     append({ commit }, payload) {
       commit('append', payload)
+
+      const state = payload
+      const title = payload.name
+      const url = payload.pathname
+      store.set('routerPush', { state, title, url })
     },
     remove(prevState: any, key: any) {
       return {
