@@ -3,7 +3,7 @@ import Home from './pages/Home.vue';
 import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import NotFound from './pages/NotFound.vue';
-import Layout from "./layouts/BasicLayout/index.tsx";
+import Layout from "./layouts/BasicLayout/index";
 import IcestarkApp from '@/components/IcestarkApp.vue';
 import IcestarkReact from './components/IcestarkReact.vue';
 
@@ -72,7 +72,27 @@ const routes: any = [
         name: 'WaiterDetail',
         meta: { title: '小二详情', icon: 'el-icon-setting' },
         component:  IcestarkApp
-      }
+      },
+    // {
+    //   path: '/',
+    //   name: 'home',
+    //   component: Home,
+    // },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'notfound',
+      component: NotFound,
+    },
     ]
   }
 ]
@@ -81,26 +101,6 @@ const router = createRouter({
   history: routerHistory,
   routes: routes,
   // routes: [
-  //   {
-  //     path: '/',
-  //     name: 'home',
-  //     component: Home,
-  //   },
-  //   {
-  //     path: '/about',
-  //     name: 'about',
-  //     component: About,
-  //   },
-  //   {
-  //     path: '/login',
-  //     name: 'login',
-  //     component: Login,
-  //   },
-  //   {
-  //     path: '/:pathMatch(.*)',
-  //     name: 'notfound',
-  //     component: NotFound,
-  //   },
   // ],
 });
 

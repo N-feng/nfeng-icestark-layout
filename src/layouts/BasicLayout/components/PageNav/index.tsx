@@ -6,6 +6,8 @@ import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig'
 import { checkActive } from '@/utils'
 import type { MenuConfig } from '@/utils'
 
+import { store as starkData } from '@ice/stark-data'
+
 export interface MenuItem {
   key: string | number
   title: string
@@ -115,7 +117,13 @@ export default defineComponent({
         checkActive(pathname, config),
       )
       const appConfig = asideMenuConfig[idx]
+      console.log('appConfig: ', appConfig)
       store.dispatch('panes/append', { ...appConfig, pathname })
+
+      const state = {}
+      const title = appConfig.name
+      const url = pathname
+      starkData.set('routerPush', { state, title, url })
       router.push(pathname)
     }
 
