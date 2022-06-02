@@ -1,6 +1,6 @@
-import { asideMenuConfig } from '../../layouts/BasicLayout/menuConfig';
+import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig';
 import { Module } from 'vuex'
-import { PanesState, IRootState } from '../types'
+import { PanesState, IRootState } from '@/store/types'
 
 const panes: Module<PanesState, IRootState> = {
   namespaced: true,

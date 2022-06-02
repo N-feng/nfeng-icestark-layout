@@ -1,6 +1,6 @@
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useStore } from '@/store'
-import IcestarkApp from '@/components/IcestarkApp.vue'
+import IcestarkApp from '@/components/IcestarkApp/index'
 import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig'
 import { checkActive } from '@/utils'
 import type { MenuConfig } from '@/utils'
@@ -35,8 +35,9 @@ export default defineComponent({
       return (
         <a-tabs activeKey={panesState.activeKey} onChange={onChange}>
           {panesState.panes.map((item) => (
-            <a-tab-pane key={item.activePath} tab={item.name}>
+            <a-tab-pane key={item.activePath} tab={item.name} forceRender>
               <IcestarkApp appConfig={item} />
+              {/* <div id={item.name}></div> */}
             </a-tab-pane>
           ))}
         </a-tabs>

@@ -1,4 +1,4 @@
-import type { MenuConfig } from "../utils";
+import type { MenuConfig } from "@/utils";
 
 export interface IRootState {
   count: number

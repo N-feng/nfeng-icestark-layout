@@ -50,13 +50,16 @@ export default defineComponent({
     const openKeysRef = ref<string[]>([
       '/' + window.location.pathname.split('/')[1],
     ])
-    const selectedKeysRef = ref<string[]>([
-      '/' + window.location.pathname.split('/')[1],
-    ])
-    const theme = 'light' as MenuTheme
+
     const router = useRouter()
+    const route = useRoute()
     const store = useStore()
 
+    const selectedKeysRef = computed(() => {
+      return [route.path]
+    })
+
+    const theme = 'light' as MenuTheme
     const list: MenuItem[] = [
       {
         key: '/',
@@ -117,7 +120,6 @@ export default defineComponent({
         checkActive(pathname, config),
       )
       const appConfig = asideMenuConfig[idx]
-      console.log('appConfig: ', appConfig)
       store.dispatch('panes/append', { ...appConfig, pathname })
 
       const state = {}
@@ -128,14 +130,14 @@ export default defineComponent({
     }
 
     return () => {
-      let openKeys = openKeysRef.value
-      let selectedKeys = selectedKeysRef.value
+      const openKeys = openKeysRef.value
+      const selectedKeys = selectedKeysRef.value
 
       return (
         <a-menu
           id={'dddddd'}
-          v-model:openKeys={openKeys}
-          v-model:selectedKeys={selectedKeys}
+          openKeys={openKeys}
+          selectedKeys={selectedKeys}
           theme={theme}
           mode={'inline'}
           onClick={handleClick}

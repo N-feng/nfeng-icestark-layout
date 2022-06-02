@@ -21,7 +21,7 @@ export default defineComponent({
   setup() {
     // console.log(router);
     const route = useRoute()
-    console.log('route: ', route)
+    // console.log('route: ', route)
 
     const value = computed(() => {
       return route.path

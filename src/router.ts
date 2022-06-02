@@ -4,8 +4,7 @@ import About from './pages/About.vue';
 import Login from './pages/Login.vue';
 import NotFound from './pages/NotFound.vue';
 import Layout from "./layouts/BasicLayout/index";
-import IcestarkApp from '@/components/IcestarkApp.vue';
-import IcestarkReact from './components/IcestarkReact.vue';
+import IcestarkApp from './components/IcestarkApp/index';
 
 const routerHistory = createWebHistory();
 
@@ -100,8 +99,6 @@ const routes: any = [
 const router = createRouter({
   history: routerHistory,
   routes: routes,
-  // routes: [
-  // ],
 });
 
 export default router;
