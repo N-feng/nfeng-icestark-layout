@@ -115,18 +115,22 @@ export default defineComponent({
 
     const handleClick: MenuProps['onClick'] = (menuInfo) => {
       const pathname = menuInfo.key.toString()
+      console.log('pathname: ', pathname)
 
       const idx = asideMenuConfig.findIndex((config: MenuConfig) =>
         checkActive(pathname, config),
       )
-      const appConfig = asideMenuConfig[idx]
-      store.dispatch('panes/append', { ...appConfig, pathname })
+      if (idx > -1) {
+        store.dispatch('panes/append', asideMenuConfig[idx])
+      }
 
       const state = {}
-      const title = appConfig.name
+      const title = pathname.split('/')[1]
+      console.log('title: ', title)
       const url = pathname
       starkData.set('routerPush', { state, title, url })
       router.push(pathname)
+      // console.log('router: ', router);
     }
 
     return () => {

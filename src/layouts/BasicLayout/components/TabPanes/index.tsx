@@ -1,4 +1,4 @@
-import { computed, defineComponent, onMounted, ref } from 'vue'
+import { computed, DefineComponent, defineComponent, onMounted, ref } from 'vue'
 import { useStore } from '@/store'
 import IcestarkApp from '@/components/IcestarkApp/index'
 import { asideMenuConfig } from '@/layouts/BasicLayout/menuConfig'
@@ -12,15 +12,7 @@ export default defineComponent({
     const router = useRouter()
 
     const panesStateRef = computed(() => store.state.panes)
-    const onChange = (activeKey: string) => {
-      const path = store.state.panes.panes.find(
-        (pane) => pane.activePath === activeKey,
-      )?.activePath
-      if (path) {
-        console.log(path)
-        router.push(path)
-      }
-    }
+    // console.log('panesStateRef: ', panesStateRef.value)
 
     onMounted(() => {
       const idx = asideMenuConfig.findIndex((config: MenuConfig) =>
@@ -30,14 +22,31 @@ export default defineComponent({
         store.dispatch('panes/append', asideMenuConfig[idx])
       }
     })
+
+    const onChange = (activeKey: string) => {
+      const path = store.state.panes.panes.find(
+        (pane) => pane.activePath === activeKey,
+      )?.activePath
+      if (path) {
+        const idx = asideMenuConfig.findIndex((config: MenuConfig) =>
+          checkActive(path, config),
+        )
+        if (idx > -1) {
+          store.dispatch('panes/append', asideMenuConfig[idx])
+        }
+        console.log(store.state.panes)
+        router.push(path)
+      }
+    }
     return () => {
+      // const activeKey = activeKeyRef.value
       const panesState = panesStateRef.value
       return (
         <a-tabs activeKey={panesState.activeKey} onChange={onChange}>
           {panesState.panes.map((item) => (
             <a-tab-pane key={item.activePath} tab={item.name} forceRender>
-              <IcestarkApp appConfig={item} />
-              {/* <div id={item.name}></div> */}
+              {/* <IcestarkApp appConfig={item} /> */}
+              {/* <router-view appConfig={item} /> */}
             </a-tab-pane>
           ))}
         </a-tabs>

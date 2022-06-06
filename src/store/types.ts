@@ -1,4 +1,4 @@
-import type { MenuConfig } from "@/utils";
+import type { MenuConfig } from '@/utils'
 
 export interface IRootState {
   count: number
@@ -9,8 +9,13 @@ export interface PanesState {
   activeKey: string
 }
 
-export interface IModuleState {
-  panes: PanesState
+export interface MicroState {
+  microApplicationList: Map<string, string>
 }
 
-export type IStore = IRootState & IModuleState;
+export interface IModuleState {
+  panes: PanesState
+  micro: MicroState
+}
+
+export type IStore = IRootState & IModuleState

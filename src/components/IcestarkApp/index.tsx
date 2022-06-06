@@ -8,29 +8,34 @@ import {
 } from 'vue'
 import { createMicroApp, unmountMicroApp } from '@ice/stark/lib/apps'
 import type { MenuConfig } from '@/utils'
+import { useStore } from '@/store'
 
 export default defineComponent({
   name: 'IcestartApp',
-  props: {
-    appConfig: {
-      type: Object as PropType<MenuConfig>,
-      required: true,
-    },
-  },
+  // props: {
+  //   appConfig: {
+  //     type: Object as PropType<MenuConfig>,
+  //     required: true,
+  //   },
+  // },
   setup(props) {
     // const appRef = ref(undefined)
+    const store = useStore()
+    const appName = location.pathname.split('/')[1]
 
     onActivated(() => {
       console.log('onActivated')
     })
 
-    onMounted(() => {
-      const container = document.getElementById(
-        props.appConfig.name,
-      ) as HTMLElement
+    onMounted(async () => {
+      const appConfig = await store.dispatch(
+        'micro/GET_FIND_MICRO_CONFIG',
+        appName,
+      )
+      const container = document.getElementById(appName) as HTMLElement
       createMicroApp(
         {
-          ...props.appConfig,
+          ...appConfig,
           container,
         },
         undefined,
@@ -52,11 +57,16 @@ export default defineComponent({
       )
     })
 
-    onUnmounted(() => {
-      unmountMicroApp(props.appConfig.name)
+    onUnmounted(async () => {
+      const appConfig = await store.dispatch(
+        'micro/GET_FIND_MICRO_CONFIG',
+        appName,
+      )
+      unmountMicroApp(appConfig.name)
     })
     return () => {
-      return <div id={props.appConfig.name} />
+      // return <div id={props.appConfig.name} />
+      return <div id={appName}>IcestarkApp</div>
     }
   },
 })
