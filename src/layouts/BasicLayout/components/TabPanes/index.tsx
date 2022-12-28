@@ -35,7 +35,11 @@ export default defineComponent({
       return (
         <a-tabs activeKey={panesState.activeKey} onChange={onChange}>
           {panesState.panes.map((item) => (
-            <a-tab-pane key={item.activePath} tab={item.name}>
+            <a-tab-pane
+              key={item.activePath}
+              tab={item.name}
+              forceRender={true}
+            >
               <IcestarkApp appConfig={item} />
             </a-tab-pane>
           ))}
