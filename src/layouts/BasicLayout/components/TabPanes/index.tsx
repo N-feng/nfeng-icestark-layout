@@ -42,20 +42,21 @@ export default defineComponent({
       // const activeKey = activeKeyRef.value
       const panesState = panesStateRef.value
       return (
-        <a-tabs activeKey={panesState.activeKey} onChange={onChange}>
-          {panesState.panes.map((item) => (
-            <a-tab-pane
-              key={item.activePath}
-              tab={item.name}
-              forceRender={true}
-            >
-              {/* <IcestarkApp appConfig={item} /> */}
-            <a-tab-pane key={item.activePath} tab={item.name} forceRender>
-              {/* <IcestarkApp appConfig={item} /> */}
-              {/* <router-view appConfig={item} /> */}
-            </a-tab-pane>
-          ))}
-        </a-tabs>
+        <div>全栈学习</div>
+        // <a-tabs activeKey={panesState.activeKey} onChange={onChange}>
+        //   {panesState.panes.map((item) => (
+        //     <a-tab-pane
+        //       key={item.activePath}
+        //       tab={item.name}
+        //       forceRender={true}
+        //     >
+        //       {/* <IcestarkApp appConfig={item} /> */}
+        //     <a-tab-pane key={item.activePath} tab={item.name} forceRender>
+        //       <IcestarkApp appConfig={item} />
+        //       {/* <router-view appConfig={item} /> */}
+        //     </a-tab-pane>
+        //   ))}
+        // </a-tabs>
       )
     }
   },
