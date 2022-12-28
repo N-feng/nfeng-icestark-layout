@@ -50,13 +50,16 @@ export default defineComponent({
     const openKeysRef = ref<string[]>([
       '/' + window.location.pathname.split('/')[1],
     ])
-    const selectedKeysRef = ref<string[]>([
-      '/' + window.location.pathname.split('/')[1],
-    ])
-    const theme = 'light' as MenuTheme
+
     const router = useRouter()
+    const route = useRoute()
     const store = useStore()
 
+    const selectedKeysRef = computed(() => {
+      return [route.path]
+    })
+
+    const theme = 'light' as MenuTheme
     const list: MenuItem[] = [
       {
         key: '/',
@@ -112,30 +115,33 @@ export default defineComponent({
 
     const handleClick: MenuProps['onClick'] = (menuInfo) => {
       const pathname = menuInfo.key.toString()
+      console.log('pathname: ', pathname)
 
       const idx = asideMenuConfig.findIndex((config: MenuConfig) =>
         checkActive(pathname, config),
       )
-      const appConfig = asideMenuConfig[idx]
-      console.log('appConfig: ', appConfig)
-      store.dispatch('panes/append', { ...appConfig, pathname })
+      if (idx > -1) {
+        store.dispatch('panes/append', asideMenuConfig[idx])
+      }
 
       const state = {}
-      const title = appConfig.name
+      const title = pathname.split('/')[1]
+      console.log('title: ', title)
       const url = pathname
       starkData.set('routerPush', { state, title, url })
       router.push(pathname)
+      // console.log('router: ', router);
     }
 
     return () => {
-      let openKeys = openKeysRef.value
-      let selectedKeys = selectedKeysRef.value
+      const openKeys = openKeysRef.value
+      const selectedKeys = selectedKeysRef.value
 
       return (
         <a-menu
           id={'dddddd'}
-          v-model:openKeys={openKeys}
-          v-model:selectedKeys={selectedKeys}
+          openKeys={openKeys}
+          selectedKeys={selectedKeys}
           theme={theme}
           mode={'inline'}
           onClick={handleClick}

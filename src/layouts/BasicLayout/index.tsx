@@ -6,8 +6,15 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
 } from '@ant-design/icons-vue'
-import { useRouter, useRoute } from 'vue-router'
-import { defineComponent, computed, onMounted, ref } from 'vue'
+import { useRouter, useRoute, RouterView, RouteRecordRaw } from 'vue-router'
+import {
+  defineComponent,
+  computed,
+  onMounted,
+  ref,
+  watch,
+  KeepAlive,
+} from 'vue'
 // import { store } from "@ice/stark-data";
 import PageNav from './components/PageNav/index'
 import TabPanes from './components/TabPanes/index'
@@ -16,25 +23,26 @@ import { checkActive } from '@/utils'
 import type { MenuConfig } from '@/utils'
 import { useStore } from '@/store'
 import type { MenuProps, MenuTheme } from 'ant-design-vue'
+import { microApplicationLoading } from '@/micro'
 
 export default defineComponent({
   setup() {
-    // console.log(router);
     const route = useRoute()
-    console.log('route: ', route)
-
-    const value = computed(() => {
-      return route.path
-    })
 
     const store = useStore()
 
-    const isKeepAlive = computed(() => {
+    const appNameRef = computed(() => {
+      return route.path.split('/')[1]
+    })
+
+    const isKeepAliveRef = computed(() => {
       if (route.meta.keepAlive === undefined) {
         return true
       }
       return route.meta.keepAlive
     })
+
+    console.log(isKeepAliveRef.value)
 
     const collapsedRef = ref<boolean>(false)
     const theme = 'light' as MenuTheme
@@ -54,6 +62,8 @@ export default defineComponent({
 
     return () => {
       let collapsed = collapsedRef.value
+      let isKeepAlive = isKeepAliveRef.value
+      let appName = appNameRef.value
 
       return (
         <a-layout id={'components-layout-demo-custom-trigger'}>
@@ -89,6 +99,32 @@ export default defineComponent({
               }}
             >
               <TabPanes />
+              <RouterView
+                v-slots={{
+                  default: ({
+                    Component,
+                    route,
+                  }: {
+                    Component: any
+                    route: RouteRecordRaw
+                  }) => {
+                    return (
+                      <div>
+                        <KeepAlive>
+                          {isKeepAlive ? <Component key={appName} /> : ''}
+                        </KeepAlive>
+
+                        {!isKeepAlive ? (
+                          <Component key={location.pathname} />
+                        ) : (
+                          ''
+                        )}
+                      </div>
+                    )
+                    // return <component is={Component} />
+                  },
+                }}
+              />
             </a-layout-content>
           </a-layout>
         </a-layout>
