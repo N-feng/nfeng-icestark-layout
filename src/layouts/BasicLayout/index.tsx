@@ -92,40 +92,48 @@ export default defineComponent({
             </a-layout-header>
             <a-layout-content
               style={{
-                margin: '24px 16px',
-                padding: '24px',
-                background: '#fff',
-                minHeight: '280px',
+                margin: '24px 16px 0',
               }}
             >
-              <TabPanes />
-              <RouterView
-                v-slots={{
-                  default: ({
-                    Component,
-                    route,
-                  }: {
-                    Component: any
-                    route: RouteRecordRaw
-                  }) => {
-                    return (
-                      <div>
-                        <KeepAlive>
-                          {isKeepAlive ? <Component key={appName} /> : ''}
-                        </KeepAlive>
-
-                        {!isKeepAlive ? (
-                          <Component key={location.pathname} />
-                        ) : (
-                          ''
-                        )}
-                      </div>
-                    )
-                    // return <component is={Component} />
-                  },
+              <div
+                style={{
+                  padding: '24px',
+                  background: '#fff',
+                  minHeight: '280px',
                 }}
-              />
+              >
+                <TabPanes />
+                <RouterView
+                  v-slots={{
+                    default: ({
+                      Component,
+                      route,
+                    }: {
+                      Component: any
+                      route: RouteRecordRaw
+                    }) => {
+                      return (
+                        <div>
+                          <KeepAlive>
+                            {isKeepAlive ? <Component key={appName} /> : ''}
+                          </KeepAlive>
+
+                          {!isKeepAlive ? (
+                            <Component key={location.pathname} />
+                          ) : (
+                            ''
+                          )}
+                        </div>
+                      )
+                      // return <component is={Component} />
+                    },
+                  }}
+                />
+              </div>
             </a-layout-content>
+            <a-layout-footer style="text-align: center">
+              <a href="https://beian.miit.gov.cn/">粤ICP备2022038483号-1</a>
+            </a-layout-footer>
           </a-layout>
         </a-layout>
       )
